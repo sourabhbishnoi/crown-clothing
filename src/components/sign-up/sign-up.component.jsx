@@ -21,7 +21,7 @@ class SignUp extends React.Component{
     	event.preventDefault();
     	const {displayName,email,password,confirmPassword} = this.state;
 
-    	if(password != confirmPassword){
+    	if(password !== confirmPassword){
     		alert("password don't match");
     		return;
     	}
@@ -35,22 +35,22 @@ class SignUp extends React.Component{
 			email:'',
 			password: '',
 			confirmPassword : ''
-    		})
+    		});
     	}catch(error){
-              console.log(error);
+              console.error(error);
     	}
-    }
+    };
 
        handleChange = event =>{
        	const{name,value} = event.target;
        	this.setState({[name]:value});
-       }
+       };
 
 	render(){
            const {displayName, email, password, confirmPassword} = this.state;
           return(
           <div className='sign-up'>
-            <h2>I do not have an account</h2>
+            <h2 className='title'>I do not have an account</h2>
             <span> Sign up with your email and password</span>
 
             <form className='sign-up-form' onClick={this.handleSubmit}>
@@ -59,7 +59,7 @@ class SignUp extends React.Component{
               name='displayName'
               value={displayName}
               onChange={this.handleChange}
-              label='displayName'
+              label='DisplayName'
               required/>
 
               <FormInput   
@@ -83,13 +83,13 @@ class SignUp extends React.Component{
               name='confirmPassword'
               value={confirmPassword}
               onChange={this.handleChange}
-              label='confirmPassword'
+              label='Confirm Password'
               required/>
 
               <CustomButton type='submit'> SIGN UP</CustomButton>
            
            </form>
-          </div>)
+          </div>);
 			
 	}
 }
